@@ -1,4 +1,4 @@
-package java1;
+package java1.basic_algo;
 
 public class Student {
     private String name;
