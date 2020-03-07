@@ -27,24 +27,29 @@ function solution(N, stages) {
     for(var i=1; i < N+1; i++) { //i는 스테이지
         
         var stageUsers = stages.filter(x => x===i).length;
-
+        // 2, 1, 2, 6, 2, 4, 3, 3 
         if( stageUsers === 0 ){
             failure = 0;
         }else{
-            failure = stageUsers / userNo *100;
+            failure = stageUsers / userNo;
         }
 
-        console.log(i + "번스테이지 실패율 >> "+failure + " %")
-        temp[i] = failure;
+        temp[parseInt(i)] = failure;
+        userNo -= stageUsers; 
     }
-   
-    console.log( temp);
+    console.log(temp);
+
     answer = sortLevels(temp);
     return console.log(answer);
 }
 
 function sortLevels(temp){
-    return Object.keys(temp).sort(function(a,b){return temp[b]-temp[a]});
+    var arr =  Object.keys(temp).sort(function(a,b){return temp[b]-temp[a]});
+    var newArr=[];
+    for(var i=0; i<arr.length; i++){
+        newArr.push(parseInt(arr[i]))
+    }
+    return newArr;
 }
 
 
